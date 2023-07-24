@@ -22,10 +22,16 @@ class UserController(
     fun findAll() = service.findAll()
 
     @Get("/{id}")
+    @Status(HttpStatus.OK)
     fun findById(id: String) = service.findById(id).orThrowNotFoundException(id)
 
     @Put("/{id}")
+    @Status(HttpStatus.OK)
     fun update(id: String, request: UserRequest) = service.update(id, request.toModel()).orThrowNotFoundException(id)
+
+    @Status(HttpStatus.NO_CONTENT)
+    @Delete("/{id}")
+    fun delete(id: String) = service.delete(id).orThrowNotFoundException(id)
 
     private fun Optional<User>.orThrowNotFoundException(id: String) =
         this.orElseThrow { HttpStatusException(HttpStatus.NOT_FOUND, "User with ID `$id` was not found.") }

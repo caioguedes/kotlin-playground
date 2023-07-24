@@ -9,10 +9,12 @@ import java.util.*
 class UserService(
     private val repository: UserRepository
 ) {
-
     fun create(user: User): User = repository.save(user)
     fun findAll(): List<User> = repository.findAll().toList()
     fun findById(id: String): Optional<User> = repository.findById(id)
     fun update(id: String, user: User): Optional<User> =
         findById(id).map { found -> repository.update(user.copy(id = found.id)) }
+
+    fun delete(id: String): Optional<User> =
+        findById(id).apply { ifPresent { found -> repository.delete(found) } }
 }
