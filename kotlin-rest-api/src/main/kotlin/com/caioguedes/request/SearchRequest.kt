@@ -1,5 +1,5 @@
 package com.caioguedes.request
 
 data class SearchRequest(
-    val name: String
+    val name: String? = null
 )

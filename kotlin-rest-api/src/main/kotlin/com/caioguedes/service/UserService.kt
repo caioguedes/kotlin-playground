@@ -17,4 +17,6 @@ class UserService(
 
     fun delete(id: String): Optional<User> =
         findById(id).apply { ifPresent { found -> repository.delete(found) } }
+
+    fun findByName(name: String): List<User> = repository.findByName(name)
 }

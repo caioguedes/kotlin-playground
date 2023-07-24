@@ -33,6 +33,9 @@ class UserController(
     @Delete("/{id}")
     fun delete(id: String) = service.delete(id).orThrowNotFoundException(id)
 
+    @Get("/search")
+    fun search(name: String?) = if (name != null) service.findByName(name) else findAll()
+
     private fun Optional<User>.orThrowNotFoundException(id: String) =
         this.orElseThrow { HttpStatusException(HttpStatus.NOT_FOUND, "User with ID `$id` was not found.") }
 }
