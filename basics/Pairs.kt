@@ -2,7 +2,7 @@ import Color.*
 
 // Awesome! Pair of values with destruct, inference type and pair
 fun updateWeatherIdiomatic(degrees: Int) {
-    val (description, color) = when {
+    val (description, color) = when { // Note! No argument is necessary
         degrees < 0 -> "cold" to BLUE // Awesome! Pair's constructor Pair("cold", BLUE) can be replaced by `to`
         degrees < 25 -> "mild" to ORANGE
         else -> "hot" to RED
@@ -28,5 +28,5 @@ fun updateWeather(degrees: Int) {
 }
 
 enum class Color {
-    BLUE, ORANGE, RED
+    BLUE, ORANGE, RED, YELLOW, GREEN, BROWN
 }
