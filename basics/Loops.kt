@@ -28,4 +28,8 @@ fun main() {
     // Note! `in` works for iterate also checking
     val c = 10 in 1..10 // >= 1 && =< 10
     val c1 = 2 in listOf(1, 2, 3)
+    when (10) {
+        in 1.. 10 -> "True"
+        else -> "False"
+    }
 }
